@@ -13,7 +13,7 @@ services:
         ports:
             - "8080:8080"
     postgis:
-	image: osgeo4inspire/postgis-bsg
+        image: osgeo4inspire/postgis-bsg
         healthcheck:
             test: ["CMD", "nc", "-zv", "localhost", "5432"]
             interval: 30s
