@@ -10,7 +10,7 @@ The docker compose uses 2 slightly modified images obtained in these repositorie
 * [postgis](https://github.com/kartoza/docker-postgis)
 * [geoserver](https://github.com/kartoza/docker-geoserver)
 
-## Run it 
+## Run build local 
 
 To run it is is best first to build the images:
 ```
@@ -22,27 +22,23 @@ And then to run it
 docker-compose up
 ```
 
+It is also possible to pull already build images (faster to start)
+```
+docker-compose -f docker-compose-production.yml up
+
+
 ### Testing
 
-Geoserver runs on port 8080 (ip: 10.10.10.2) and has the default geoserver login (admin:geoserver).
+Geoserver runs on port 8080 and has the default geoserver login (admin:geoserver). PLEASE DONT USE THIS IN PRODCUTION
 
 Geoserver:
 ```
-http://10.10.10.2:8080/geoserver
-http://10.10.10.2:8080/geoserver/ows?service=wfs&version=2.0.0&request=GetCapabilities
-http://10.10.10.2:8080/geoserver/wfs?request=GetFeature&service=wfs&version=2.0.0&typeName=gsmlgu:GeologicUnit&outputFormat=gml32&count=2
-```
-And ETF
-```
-http://10.10.10.4:8080/etf-webapp
+http://localhost:8080/geoserver
+http://localhost:8080/geoserver/ows?service=wfs&version=2.0.0&request=GetCapabilities
+http://localhost:8080/geoserver/wfs?request=GetFeature&service=wfs&version=2.0.0&typeName=gsmlgu:GeologicUnit&outputFormat=gml32&count=2
 ```
 
-
-### Network
-
-The containers run on network: *10.10.10.0/16* with gateway: 10.10.10.1
-
-
+The last should produce a valid XML with information about a Geological Unit
 
 
 ## Versions

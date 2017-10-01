@@ -14,42 +14,16 @@ services:
         depends_on:
             postgis:
               condition: service_healthy 
-        #ports:
-        #    - "80:8080"
-        networks:
-             vpcbr:
-                ipv4_address: ${IP_GS}
+        ports:
+            - "8080:8080"
     postgis:
         build:
            context: ./postgis
         environment:
-           ALLOW_IP_RANGE: $SUBNET
+           ALLOW_IP_RANGE: 0.0.0.0/0
         healthcheck:
             test: ["CMD", "nc", "-zv", "localhost", "5432"]
             interval: 30s
             timeout: 10s
             retries: 5
         container_name: postgis
-        networks:
-             vpcbr:
-                ipv4_address: $IP_PG
-    etf:
-       build:
-           context: ./etf-webapp
-       container_name: etf-webapp
-       volumes:
-           - etf_vol:/etf
-       networks:
-           vpcbr:
-                ipv4_address: $IP_ETF
-volumes:
-    etf_vol:
-       driver: local
-
-networks:
-  vpcbr:
-    driver: bridge
-    ipam:
-     config:
-       - subnet: $SUBNET
-         gateway: $GTW
