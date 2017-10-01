@@ -25,7 +25,7 @@ docker-compose up
 It is also possible to pull already build images (faster to start)
 ```
 docker-compose -f docker-compose-production.yml up
-
+```
 
 ### Testing
 
