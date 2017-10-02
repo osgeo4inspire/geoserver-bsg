@@ -43,7 +43,10 @@ The last should produce a valid XML with information about a Geological Unit
 
 ### Issues
 
-PostGIS takes sometime to ingest the data, please run a iotop command on host to see the status
+PostGIS takes sometime to ingest the data, please run a iotop command on host to see the status, while inserting data the database will not respond
+```
+ postgres: 9.5/main: docker postgis 127.0.0.1(60956) INSERT
+```
 
 ## Versions
 

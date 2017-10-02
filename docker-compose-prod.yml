@@ -1,6 +1,4 @@
 version: '2.1'
-#Note the .env file with variables
-
 services:
     gs:
         image: osgeo4inspire/geoserver-bsg
