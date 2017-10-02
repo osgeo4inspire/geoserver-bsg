@@ -41,6 +41,10 @@ http://localhost:8080/geoserver/wfs?request=GetFeature&service=wfs&version=2.0.0
 The last should produce a valid XML with information about a Geological Unit
 
 
+### Issues
+
+PostGIS takes sometime to ingest the data, please run a iotop command on host to see the status
+
 ## Versions
 
 * OS Debian Jesse
